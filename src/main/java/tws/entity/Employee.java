@@ -3,25 +3,25 @@ package tws.entity;
 import java.io.Serializable;
 
 public class Employee implements Serializable {
-    private int id;
+    private String id;
     private String name;
-    private String age;
+    private int age;
 
     public Employee() {
 
     }
 
-    public Employee(int id, String name, String age) {
+    public Employee(String id, String name, int age) {
         this.id = id;
         this.name = name;
         this.age = age;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -33,11 +33,20 @@ public class Employee implements Serializable {
         this.name = name;
     }
 
-    public String getAge() {
+    public int getAge() {
         return age;
     }
 
-    public void setAge(String age) {
+    public void setAge(int age) {
         this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                '}';
     }
 }
