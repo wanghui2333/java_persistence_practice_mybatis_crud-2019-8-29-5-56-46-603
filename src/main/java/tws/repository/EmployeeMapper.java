@@ -19,5 +19,5 @@ public interface EmployeeMapper {
 
     void update(@Param("id") String id, @Param("employee") Employee employee);
 
-    List<Employee> queryEmployeeByKeyWorld(@Param("keyWorld") String keyWorld);
+    List<Employee> queryEmployeeByKeyWord(@Param("keyWord") String keyWord);
 }

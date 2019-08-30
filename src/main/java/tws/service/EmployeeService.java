@@ -23,7 +23,7 @@ public class EmployeeService implements Serializable {
 
     public List<EmployeeDto> getEmployeeWithDescription(String description){
 
-        List<Employee> employees = employeeMapper.queryEmployeeByKeyWorld(description);
+        List<Employee> employees = employeeMapper.queryEmployeeByKeyWord(description);
 
         List<EmployeeDto> employeeDtos = new ArrayList<>();
         employees.forEach(employee -> {

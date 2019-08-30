@@ -10,9 +10,13 @@
         select * from `employee` limit #{limit} offset #{offset};
     </select>
 
-    <select id="queryEmployeeByKeyWorld" resultType="tws.entity.Employee">
+    <select id="queryEmployeeByKeyWord" resultType="tws.entity.Employee">
         select * from employee
-        where name like #{keyWorld} or age like #{keyWorld};
+
+        <if test="keyWord != null">
+            <bind name="pattern" value="'%' + keyWord + '%'" />
+            where name like #{pattern} or age like #{pattern};
+        </if>
     </select>
 
     <insert id="insert">
