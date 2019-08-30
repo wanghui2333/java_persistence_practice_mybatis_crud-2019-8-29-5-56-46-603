@@ -19,12 +19,19 @@ public class EmployeeController {
     private EmployeeMapper employeeMapper;
 
     @GetMapping
-    public ResponseEntity<List<Employee>> getAll() {
-        return ResponseEntity.ok(employeeMapper.selectAll());
+    public ResponseEntity<List<Employee>> getAll(@RequestParam(required = false) Integer page, @RequestParam(required = false) Integer pageSize) {
+        if (page == null || pageSize ==null){
+            return ResponseEntity.ok(employeeMapper.selectAll());
+        }
+
+        int limit = pageSize;
+        int offset = (page -1) * pageSize;
+        return ResponseEntity.ok(employeeMapper.selectPageSize(limit, offset));
     }
 
     @GetMapping("/{keyWorld}")
     public ResponseEntity<List<Employee>> getEmployeeByKeyWorld(@PathVariable String keyWorld) {
+
         return ResponseEntity.ok(employeeMapper.queryEmployeeByKeyWorld(keyWorld));
     }
 
@@ -39,12 +46,11 @@ public class EmployeeController {
     }
 
     @PutMapping
-    public ResponseEntity<List<Employee>> putEmployess(@RequestParam String id, @RequestBody Employee employee){
+    public ResponseEntity<String> putEmployess(@RequestParam String id, @RequestBody Employee employee){
 
         employeeMapper.update(id, employee);
 
-        List<Employee> employees = employeeMapper.selectAll();
-        return ResponseEntity.ok(employees);
+        return ResponseEntity.ok("success");
     }
 
 

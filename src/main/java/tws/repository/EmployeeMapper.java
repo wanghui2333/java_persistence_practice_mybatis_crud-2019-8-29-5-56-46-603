@@ -10,11 +10,14 @@ import java.util.List;
 @Mapper
 @Service
 public interface EmployeeMapper {
+
     List<Employee> selectAll();
+
+    List<Employee> selectPageSize(@Param("limit")int limit, @Param("offset")int offset);
 
     void insert(@Param("employee") Employee employee);
 
     void update(@Param("id") String id, @Param("employee") Employee employee);
 
-    List<Employee> queryEmployeeByKeyWorld(String keyWorld);
+    List<Employee> queryEmployeeByKeyWorld(@Param("keyWorld") String keyWorld);
 }

@@ -5,6 +5,11 @@
         select * from `employee`;
     </select>
 
+
+    <select id="selectPageSize" resultType="tws.entity.Employee">
+        select * from `employee` limit #{limit} offset #{offset};
+    </select>
+
     <select id="queryEmployeeByKeyWorld" resultType="tws.entity.Employee">
         select * from employee
         where name like #{keyWorld} or age like #{keyWorld};
